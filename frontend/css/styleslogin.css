@@ -1,0 +1,124 @@
+html, body{
+    padding: 0;
+    margin: 0;
+    background-color: #cac9cf;
+}
+
+body{
+    font-family: sans-serif;
+}
+
+.banner {
+    background-color: #81c533be;
+    color: #000000;
+    padding: 15px 15px;
+    text-align: center;
+    position: relative;
+    margin-bottom: 3px;
+}
+
+.banner h1 {
+    font-variant: small-caps;
+    font-weight: bold;
+    font-size-adjust: 1;
+    margin: 0;
+}
+
+.banner h2 {
+    font-variant: small-caps;
+    font-weight: bold;
+    font-size-adjust: 0.8;
+    margin: 0;
+}
+
+.titulo {
+    text-align: center;
+    text-decoration: none;
+    padding: 10px;
+    margin: 0;
+    font-weight: bold;
+    color: #649d23;
+}
+
+form {
+    display: grid;
+    justify-self: center;
+    width: 300px;
+    margin-top: 5px;
+}
+
+input {
+    line-height: 2.5;
+    margin: 5px;
+    font-size: 12px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+}
+
+form h3{
+    line-height: 1;
+    margin: 0;
+    padding: 5px;
+}
+
+select {
+    padding: 5px;
+    margin: 10px;
+    width: 150px;
+    border-radius: 20px;
+}
+
+.bottom {
+    justify-self: center;
+    font-size: 15px;
+    margin-top: 10PX;
+}
+
+.bottom ul {
+    display: none;
+}
+
+.bottom ul a {
+    text-decoration: none;
+    color: #000000;
+    margin: 0;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 3;
+}
+
+.bottom:hover ul {
+    background-color: #81c533be;
+    display: block;
+    position: absolute;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    z-index: 1;
+}
+
+button {
+    font-size: 15px;
+    letter-spacing: 1px;
+    font-variant: small-caps;
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    border: 3px solid #65a21f;
+    border-radius: 5px;
+    background-color: #d3ecb7be;
+    position: relative;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button {
+    justify-self: center;
+    margin-top: 15px;
+}
+
+button:hover {
+    background-color: #81c533be;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escuchate ésta</title>
+    <link rel="stylesheet" href="css/stylesinicial.css"/>
+    <script type="module" src="./js/inicial.js"></script>
+</head>
+<body>
+    <div class="banner">
+        <h1>Escuchate esta:</h1>
+        <h2>Mar del Plata</h2>
+    </div>
+
+    <!--   TODO HARDCODEADO. CREAR BASE DE DATOS PARA AGREGAR LOGICA DE JSON    -->
+
+    <div class="navbarr">
+        <a class="linkPerfil" href="#">Mi Perfil</a>     <!-- solo visible para artista. Cómo? ni idea, problema de Sofia del futuro-->
+        <a class="inicio" href="login.html">Iniciar sesión</a>    <!-- Al iniciar sesion desaparece. Cómo? menos idea -->
+        <a href="#">Eventos</a>
+    </div>
+
+    <div class="buscador">
+        <input type="text" placeholder="Buscar artistas y eventos">
+    </div>
+    
+    <div class="eventos">
+        <div class="tarjetaevento">
+            <div class="fototarjeta">
+                <img src="https://f4.bcbits.com/img/0024177600_25.jpg" alt="Luciana Panaino">
+            </div>
+            
+            <div class="informacion">
+                <h3><span class="nombre">Luciana Panaino</span></h3>
+            
+                <small><span class="genero">Tango</span></small>
+                <small><span class="genero">Folklore</span></small>
+                
+                <h4><span class="fecha">19 de Mayo, 17:00</span></h4>
+                <h4><span class="ubicacion">España 2942</span></h4>
+
+                <div class="parrafo">
+                    <p>"Historias de Café" es el nuevo trabajo discográfico de un exquisito y desconocido repertorio del poeta Homero Manzi 
+                        que presenta Luciana Panaino, cantante, intérprete, compositora y guitarrista de tango.. Tangos, valses, milongas y música 
+                        rioplatense descubren estas obras en el paisaje mágico, creativo, revolucionario, político, pasatista y urbano del café 
+                        junto a Claudio Solino, en un formato acústico, en bajo y percusión.</p>
+                </div>
+               <a href="#" class="botonleermas">Leer más</a> 
+            </div>
+        </div>
+    </div>
+</body>
+</html>
