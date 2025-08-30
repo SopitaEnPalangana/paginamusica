@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escuchate Esta</title>
+    <link rel="stylesheet" href="css/profile.css"> <!-- css file -->
+    <script type="module" src="js/profile.js"></script>  <!-- javascript file -->
+</head>
+<body>
+    <div class="topbanner">    
+        <a href="index.html">Escuchate Esta</a>
+        <div class="menu">
+            <a href="event.html" id="neweventbutton">Add new Event</a>
+        </div>
+    </div>
+
+    <div>
+        <h1 class="profiletitle"></h1>
+    </div>
+    <div class="profile">
+        <div class="eventlist">
+            <h2></h2>
+        </div>
+        <template id="eventcard">
+            <div class="eventcard">
+                <div class="picture">
+                    <h1><img src="" alt=""></h1>
+                </div>
+
+                <div class="eventdata">
+                    <h2 class="artistsname"></h2>
+                    <h3 class="eventsname"></h3>
+                    <h3 class="location"></h3>
+                    <h3 class="date"></h3>
+                    <h3 class="time"></h3>
+                </div>
+            </div>
+        </template>
+        <div class="artistinfo">
+            <div>
+                <h4 class="description"></h4>
+            </div>
+            <div class="socialmedia">
+                <h3 class="spotify"></h3>
+                <h3 class="youtube"></h3>
+                <h3 class="apple"></h3>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

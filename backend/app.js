@@ -1,29 +1,27 @@
 const express = require('express')
-const morgan = require('morgan')
 const config = require('./config')
 const path = require('path')
 const app = express()
 
-const inicial = require('./inicial.js')  //"cargo" el js del backend a una const
-const login = require('./auth.js')
-const registeruser = require('./auth.js')
-const registerartist = require('./auth.js')
-const nuevoevento = require('./evento.js')
 
-// Servir archivos estáticos desde /frontend
-app.use(express.static(path.join(__dirname, '../frontend')));
+const index = require('./index')
+const login = require('./auth')
+const register = require('./auth')
+const event = require('./event')
+const profile = require('./profile')
+
+//archivos estaticos desde frontend ----- what does that mean?
+app.use(express.static(path.join(__dirname, '../frontend')))
 app.use(express.json())
 
-//configuracion
+//set de port
 app.set('port', config.app.port)
 
-//me falta lo del middleware que no entendi que era así que no lo puse todavía
-
 //rutas
-app.use('/', inicial) // método de express. "cuando vaya a esta ruta, ejecuta inicial, la constante que cargue con el js que quise"
+app.use('/', index)
 app.use('/', login)
-app.use('/', registeruser)
-app.use('/', registerartist)
-app.use('/', nuevoevento)
+app.use('/', register)
+app.use('/', event)
+app.use('/', profile)
 
 module.exports = app;
