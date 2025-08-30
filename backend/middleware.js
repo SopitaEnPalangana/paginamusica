@@ -1,0 +1,17 @@
+const jwt = require('jsonwebtoken')
+const config = require('./config')
+
+function checkToken(req, res, next) {
+    const authHeader = req.headers['authorization']
+    const token = authHeader && authHeader.split(' ')[1]
+
+    if(!token){return res.status(401).json({ message: 'No Token given' }) }
+
+    jwt.verify(token, config.jwt.secret, (err, user) => {
+        if(err) return res.status(403).json({ message: 'Invalid Token' })
+        req.user = user;
+        next();
+    })
+}
+
+module.exports = { checkToken } 

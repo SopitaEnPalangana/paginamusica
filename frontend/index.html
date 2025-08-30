@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escuchate Esta</title>
+    <link rel="stylesheet" href="css/index.css"> <!-- css file -->
+    <script type="module" src="js/index.js"></script>  <!-- javascript file -->
+</head>
+<body>
+    <div class="topbanner">    
+        <a href="index.html">Escuchate Esta</a>
+        <div class="menu">
+            <a href="login.html" id="loginbutton">I'm an artist</a>
+            <a href="#" id="profilebutton">My own little profile</a>
+            <a href="#" id="logoutbutton">Get me out of here</a>
+        </div>
+    </div>
+
+    <div class="eventlist">
+    </div>
+    
+    <template id="eventcard">
+        <div class="eventcard">
+            <div class="picture">
+                <img src="" alt="">
+            </div>
+
+            <div class="eventdata">
+                <h2 class="artistsname"></h2>
+                <h3 class="eventsname"></h3>
+                <h3 class="location"></h3>
+                <h3 class="date"></h3>
+                <h3 class="time"></h3>
+                <a href="" class="seeartistbutton">Check them out</a>
+            </div>
+        </div>
+    </template>
+</body>
+</html>

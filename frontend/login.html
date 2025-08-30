@@ -3,39 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escuchate ésta</title>
-    <link rel="stylesheet" href="css/styleslogin.css"/>
-    <script type="module" src="./js/auth.js"></script>
+    <title>Escuchate Esta</title>
+    <link rel="stylesheet" href="css/login.css"> <!-- css file -->
+    <script type="module" src="./js/account.js"></script>  <!-- javascript file -->
+
 </head>
 <body>
-    <div class="banner">
-        <h1>Escuchate esta:</h1>
-        <h2>Mar del Plata</h2>
+    <div class="topbanner">    
+        <a href="index.html">Escuchate Esta</a>
     </div>
 
-    <div class="titulo">
-        <h1>Iniciar sesión</h1>
+    <div class="message">
+        Log in, you beautiful amazing artist
     </div>
-    
+
     <form id="loginForm">
-            <h3 id="mensaje"></h3>
-            <select id="tipo">
-                <option value="usuario">Usuario</option>
-                <option value="artista">Artista</option>
-            </select>
-            <input id="usuario" type="text" placeholder="Usuario" required>
-            <input id="contraseña" type="password" placeholder="Contraseña" required>
-            <button type="submit">Iniciar Sesión</button>
+        <input id="user" type="text" placeholder="Your Fabulous User name goes here" required>
+        <input id="password" type="password" placeholder="Your Super Secret Password here" required>
+        <button type="submit">Log in</button>
     </form>
 
-    <div class="bottom">
-        ¿No tenes cuenta? Hacete una:
-        <ul>
-            <li><a href="registerartist.html">SOY ARTISTA</a></li>
-            <li><a href="registeruser.html">SOY ESPECTADOR</a></li>
-        </ul>
+    <div class="questions">
+        You are not yet part of our family? 
+        <a href="register.html">Do the blood rite (sign up) here!</a>
     </div>
-
-    
 </body>
 </html>

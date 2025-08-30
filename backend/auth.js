@@ -1,82 +1,48 @@
 const express = require('express')
 const router = express.Router()
 const bcrypt = require ('bcrypt')
+const db = require ('./mysql')
 const jwt = require('jsonwebtoken')
 const config = require('./config')
-const db = require ('./mysql')
 
-//router.post('/login', login) // lo mismo que en app.js? asi sabe que esta ruta es de aca? que es esto de router?
-                            //aca carga la ruta /login al servidorcito de rutas que despues de usa en app.js
-//aca iria una funcion req res donde controlo si el usuario y contraseña existen y coinciden
-//retorna una res en json que la asigno a data en el js del front y muestra en pantalla lo que yo le diga. Creo.
+router.post('/register', async (req, res) => {
+    const { artistname, username, mail, picture, spotify, youtube, apple, password } = req.body;
 
-function generarToken(usuario) {
-    return jwt.sign(usuario, config.jwt.secret, { expiresIn: '2h' });
+    const hashed = await bcrypt.hash(password,10)
+
+    try{
+        await db.addArtist(artistname, username, mail, picture, spotify, youtube, apple, hashed)
+        console.log("New Artists added succesfully")
+        res.status(201).json({ success: true, message: "New Artist registered succesfully!"})
+        } catch(err){
+            console.error("Couldn't add the artist:", err)
+            return res.status(500).json({message: "Couldn't welcome you" });   
+        }
+})
+
+router.post('/login', async (req, res) => {
+    const { username, password } = req.body
+
+    try{
+        const users = await db.ArtistLogin(username)
+        if(users.length === 0) return res.status(401).json({ message: 'User not found'})
+        
+        const user = users[0]
+        const validPassword = await bcrypt.compare(password, user.password)
+        if(!validPassword) return res.status(401).json({ message: 'Wrong password' })
+        
+        const token = createToken({ id: user.id})
+        
+        res.status(200).json({ success: true, message: 'Welcome back you free minded bastard!', token, id: user.id}) //no entendi porque hace eso así
+        console.log(`user loged in: ${user.username}`)
+    }catch(err){
+        console.error("Failed login: ", err)
+        res.status(500).json({ message: "Failed login" })
+    }
+})
+
+function createToken(user) {
+    return jwt.sign(user, config.jwt.secret, {expiresIn: '1h'});
 }
 
-//registro de usuarios
-router.post('/registeruser', async (req, res) => {
-    const { nombreU, usuarioU, mailU, contraseñaU } = req.body
-
-    if(!nombreU || !usuarioU || !mailU || !contraseñaU) {
-        return res.status(400).json({ mensaje: 'Faltan datos '})
-    }
-
-    const hash = await bcrypt.hash(contraseñaU, 10)
-
-    const query = 'INSERT INTO Usuarios (nombre, usuario, mail, contraseña) VALUES (?, ?, ?, ?)'
-
-    db.query(query, [nombreU, usuarioU, mailU, hash], (err, result) => {
-        if(err) {return res.status(500).json({ mensaje: 'Error en la base de datos', error: err })}
-
-        res.status(201).json({ mensaje: 'Usuario registrado con éxito' })
-    })
-})
-
-//registro de artista
-router.post('/registerartist', async (req, res) => {
-    const { artista, usuarioA, mailA, contraseñaA, generosA } = req.body;
-
-    if(!artista || !usuarioA || !mailA || !contraseñaA){
-        return res.status(400).json({ mensaje: 'Faltan datos' })
-    }
-    const hash = await bcrypt.hash(contraseñaA,10)
-
-    const query = 'INSERT INTO Artistas (artista, usuario, mail, contraseña, generos) VALUES (?, ?, ?, ?, ?)'
-
-    db.query(query, [artista, usuarioA, mailA, hash, generosA], (err, result) => {
-        if(err) return res.status(500).json({ mensaje: 'Error en la base de datos', error: err });
-        res.status(201).json({ mensaje: 'Artista registrado con exito' })
-    })
-})
-
-//login pa los dos
-router.post('/login', (req, res) => {
-    const { tipo, usuario, contraseña } = req.body
-
-    if(!usuario || !contraseña) {
-        return res.status(400).json({ mensaje: 'Faltan datos' })
-    }
-
-    let tabla = tipo === 'artista' ? 'Artistas' : 'Usuarios'
-
-    const query = `SELECT * FROM ${tabla} WHERE usuario = ?`
-
-    db.query(query, [usuario], async (err, results) => {
-        if(err) return res.status(500).json({ mensaje: 'Error en la base de datos', error: err });
-
-        if(results.length === 0) return res.status(401).json({ mensaje: 'Usuario no encontrado'});
-
-        const user = results[0]
-
-        const validPassword = await bcrypt.compare(contraseña, user.contraseña)
-        if(!validPassword) return res.status(401).json({ mensaje: 'Contraseña incorrecta' });
-
-        const token = generarToken({ id: user.id, tipo})
-
-        res.status(200).json({ mensaje: 'Login exitoso. Usuario dentro del sitio', token, tipo, id: user.id})
-    })
-})
-
-module.exports = router;   //que es esto de exportar modulos y por que estoy exportando el router
-                          //es el servidorcito de express que maneja mis rutas 
+module.exports = router;

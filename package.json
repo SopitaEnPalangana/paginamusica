@@ -1,9 +1,9 @@
 {
-  "name": "musicart",
+  "name": "escuchateesta",
   "version": "1.0.0",
-  "main": "backend/server.js",
+  "main": "index.js",
   "scripts": {
-    "server": "nodemon backend/server.js"
+    "bts": "nodemon backend/bts.js"
   },
   "author": "",
   "license": "ISC",
@@ -12,11 +12,11 @@
     "bcrypt": "^6.0.0",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
-    "morgan": "^1.10.0",
-    "mysql2": "^3.14.1",
+    "morgan": "^1.10.1",
+    "mysql2": "^3.14.3",
     "nodemon": "^3.1.10"
   },
   "devDependencies": {
-    "dotenv": "^16.5.0"
+    "dotenv": "^17.2.1"
   }
 }
